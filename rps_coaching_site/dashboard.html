@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard • RPS COACHING</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .dash{min-height:100vh;background:#fafafa}
+    .dash .top{background:#111;color:#fff;padding:14px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .card{background:#fff;border:1px solid #eee;border-radius:16px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    @media(max-width:900px){ .cards{grid-template-columns:1fr} }
+  </style>
+</head>
+<body class="dash">
+  <div class="top">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <div class="brand"><div class="logo"></div><span>RPS COACHING</span></div>
+      <div>
+        <span id="hello"></span>
+        <button class="btn" id="logout">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Welcome to your Dashboard</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Your Profile</h3>
+        <p><strong>Name:</strong> <span id="pname">-</span></p>
+        <p><strong>Email:</strong> <span id="pemail">-</span></p>
+      </div>
+      <div class="card">
+        <h3>Enrolled Courses</h3>
+        <ul id="enrolled"></ul>
+        <p class="help">Use "Join Now" on the homepage to add more courses.</p>
+      </div>
+      <div class="card">
+        <h3>Progress Snapshot</h3>
+        <p>Coming soon: live test scores and progress charts.</p>
+        <div class="notice">Demo only – add your Firestore/DB later.</div>
+      </div>
+    </div>
+    <p style="margin-top:18px"><a class="btn" href="index.html">← Back to Home</a></p>
+  </div>
+
+  <script type="module">
+    import { logout } from './auth.js';
+
+    function load(){
+      const user = JSON.parse(localStorage.getItem('rps_user') || 'null');
+      if(!user){
+        window.location.href = 'login.html';
+        return;
+      }
+      document.getElementById('hello').textContent = `Hi, ${user.name || user.email}`;
+      document.getElementById('pname').textContent = user.name || '-';
+      document.getElementById('pemail').textContent = user.email || '-';
+
+      const enrolled = JSON.parse(localStorage.getItem('rps_enrolled')||'[]');
+      const ul = document.getElementById('enrolled');
+      ul.innerHTML = enrolled.length ? '' : '<li>No courses yet.</li>';
+      enrolled.forEach(c=>{
+        const li = document.createElement('li'); li.textContent = c; ul.appendChild(li);
+      });
+    }
+    load();
+    document.getElementById('logout').addEventListener('click', async ()=>{
+      try{
+        await logout();
+      }catch(e){ /* ignore */ }
+      localStorage.clear();
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

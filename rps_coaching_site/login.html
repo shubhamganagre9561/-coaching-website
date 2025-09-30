@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login • RPS COACHING</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .auth-wrap{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#fff 0,#fff8d1 40%,#fff 100%)}
+    .card{width:min(480px,92%);background:#fff;border:1px solid #eee;border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    .tabs{display:flex;gap:10px;margin-bottom:12px}
+    .tabs button{flex:1;padding:10px;border-radius:12px;border:1px solid #ddd;background:#f7f7f7;font-weight:700;cursor:pointer}
+    .tabs button.active{background:var(--brand);border-color:var(--brand)}
+    .field{display:flex;flex-direction:column;margin:10px 0}
+    .field label{font-weight:700;margin-bottom:6px}
+    .field input{padding:12px;border-radius:12px;border:1px solid #ddd}
+    .help{color:#666;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="card">
+      <div class="brand" style="margin-bottom:6px">
+        <div class="logo"></div><span>RPS COACHING</span>
+      </div>
+      <div class="tabs">
+        <button id="t-login" class="active">Login</button>
+        <button id="t-register">Register</button>
+      </div>
+      <form id="login-form">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="login-pass" required minlength="6">
+        </div>
+        <button class="btn dark" type="submit" style="width:100%;margin-top:8px">Login</button>
+        <p class="help">New here? Click "Register" tab.</p>
+      </form>
+
+      <form id="register-form" style="display:none">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="reg-name" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="reg-email" required>
+        </div>
+        <div class="field">
+          <label>Mobile</label>
+          <input type="tel" id="reg-mobile" pattern="[0-9]{10}" placeholder="10-digit number">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="reg-pass" required minlength="6">
+        </div>
+        <button class="btn primary" type="submit" style="width:100%;margin-top:8px">Create Account</button>
+        <p class="help">Password must be at least 6 characters.</p>
+      </form>
+      <p style="text-align:center;margin-top:8px"><a href="index.html">← Back to Home</a></p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { register, login } from './auth.js';
+
+    const tLogin = document.getElementById('t-login');
+    const tRegister = document.getElementById('t-register');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    tLogin.addEventListener('click', ()=>{
+      tLogin.classList.add('active');
+      tRegister.classList.remove('active');
+      loginForm.style.display='block';
+      registerForm.style.display='none';
+    });
+    tRegister.addEventListener('click', ()=>{
+      tRegister.classList.add('active');
+      tLogin.classList.remove('active');
+      loginForm.style.display='none';
+      registerForm.style.display='block';
+    });
+
+    loginForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass  = document.getElementById('login-pass').value;
+      try{
+        await login(email, pass);
+        window.location.href = 'dashboard.html';
+      }catch(err){
+        alert(err.message);
+      }
+    });
+
+    registerForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass  = document.getElementById('reg-pass').value;
+      try{
+        await register(name, email, pass);
+        window.location.href = 'dashboard.html';
+      }catch(err){
+        alert(err.message);
+      }
+    });
+  </script>
+</body>
+</html>

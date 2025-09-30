@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPS COACHING</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Requested marquee (note: marquee is deprecated but included as asked) -->
+  <div class="top-marquee">
+    <marquee behavior="scroll" direction="left">WE PREPARE FOR COMPETITIVE EXAMS • RPS COACHING • WE PREPARE FOR COMPETITIVE EXAMS</marquee>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container row">
+      <div class="brand">
+        <div class="logo"></div>
+        <span>RPS COACHING</span>
+      </div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="auth">
+        <a class="btn ghost" href="login.html">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero + Slider (Banner/Poster after menu bar) -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div>
+        <div class="notice">rps coaching and library <code>visit today</code> register your email now.</div>
+        <h1>Crack Your Next Exam with RPS COACHING</h1>
+        <p>Focused coaching for MP Police, SSC GD, NEET, PNST, UPSC and more.</p>
+        <div class="badges">
+          <a class="btn primary" href="#courses">Explore Courses</a>
+          <a class="btn dark" href="login.html">Student Login</a>
+        </div>
+      </div>
+      <div class="slider">
+        <div class="slides">
+          <div class="slide"><img src="Gemini_Generated_Image_5z5w1f5z5w1f5z5w.png" alt="Banner 1"></div>
+          <div class="slide"><img src="Gemini_Generated_Image_ab64wsab64wsab64.png" alt="Banner 2"></div>
+          <div class="slide"><img src="00002.jpg" alt="Banner 3"></div>
+        </div>
+        <div class="controls">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Teachers: round photos + names -->
+  <section class="section">
+    <div class="container">
+      <h2>Our Teachers</h2>
+      <div class="teachers">
+        <div class="teacher-card">
+          <img src="assets/images/teachers/teacher1.svg" alt="Teacher 1">
+          <h4>vikas sir</h4>
+          <p>Quantitative Aptitude</p>
+        </div>
+        <div class="teacher-card">
+          <img src="assets/images/teachers/teacher2.svg" alt="Teacher 2">
+          <h4>sk sir</h4>
+          <p>Reasoning & Logic</p>
+        </div>
+        <div class="teacher-card">
+          <img src="assets/images/teachers/teacher3.svg" alt="Teacher 3">
+          <h4>Ananya Verma</h4>
+          <p>Biology (NEET)</p>
+        </div>
+        <div class="teacher-card">
+          <img src="assets/images/teachers/teacher4.svg" alt="Teacher 4">
+          <h4>Arjun Singh</h4>
+          <p>GS & Polity</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Coaching / Explore Library buttons -->
+  <section class="section">
+    <div class="container duo">
+      <a class="btn primary" href="#about">Explore Coaching</a>
+      <a class="btn" href="#library">Explore Library</a>
+    </div>
+  </section>
+
+  <!-- Moving console (continuous banner ticker) -->
+  <section class="section">
+    <div class="container">
+      <h2>Updates & Announcements</h2>
+      <div class="ticker">
+        <div class="strip">
+          <span class="tag">Admissions Open</span>
+          <span class="tag">Mock Tests Every Sunday</span>
+          <span class="tag">New Batch for MP Police</span>
+          <span class="tag">Scholarship for Top Performers</span>
+          <span class="tag">SSC GD Practice Marathon</span>
+          <span class="tag">UPSC GS Crash Course</span>
+          <span class="tag">NEET Bio Booster</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 square poster drop boxes -->
+  <section class="section">
+    <div class="container">
+      <h2>Promotional Posters</h2>
+      <div class="poster-grid">
+        <label class="poster"><span class="label">Drop / Click to add Poster 1<input type="file" accept="image/*"></span></label>
+        <label class="poster"><span class="label">Drop / Click to add Poster 2<input type="file" accept="image/*"></span></label>
+        <label class="poster"><span class="label">Drop / Click to add Poster 3<input type="file" accept="image/*"></span></label>
+        <label class="poster"><span class="label">Drop / Click to add Poster 4<input type="file" accept="image/*"></span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses with Join Now buttons -->
+  <section id="courses" class="section">
+    <div class="container">
+      <h2>Courses Offered</h2>
+      <div class="courses">
+        <div class="course-card">
+          <div>
+            <h3>MP Police</h3>
+            <p>Complete syllabus coverage with PYQs and weekly tests.</p>
+          </div>
+          <button class="btn primary" data-course="MP Police">Join Now</button>
+        </div>
+        <div class="course-card">
+          <div>
+            <h3>SSC GD</h3>
+            <p>Speed-building drills, GK capsules, and daily practice.</p>
+          </div>
+          <button class="btn primary" data-course="SSC GD">Join Now</button>
+        </div>
+        <div class="course-card">
+          <div>
+            <h3>NEET</h3>
+            <p>Concept-first learning with bio/chem/physics modules.</p>
+          </div>
+          <button class="btn primary" data-course="NEET">Join Now</button>
+        </div>
+        <div class="course-card">
+          <div>
+            <h3>PNST</h3>
+            <p>Nursing entrance focused prep and targeted mocks.</p>
+          </div>
+          <button class="btn primary" data-course="PNST">Join Now</button>
+        </div>
+        <div class="course-card">
+          <div>
+            <h3>UPSC</h3>
+            <p>GS foundation, CSAT booster, and test series.</p>
+          </div>
+          <button class="btn primary" data-course="UPSC">Join Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <h4>RPS COACHING</h4>
+          <p>Betul JH College Road • Phone: 95222 66730</p>
+          <p>Email: info@rpscoaching.example</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p><a href="#about">About</a></p>
+          <p><a href="#courses">Courses</a></p>
+          <p><a href="login.html">Student Login</a></p>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <p><a href="#">Facebook</a></p>
+          <p><a href="#">Instagram</a></p>
+          <p><a href="#">YouTube</a></p>
+        </div>
+      </div>
+      <p style="margin-top:18px;color:#666;">© <span id="y"></span> RPS COACHING</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
